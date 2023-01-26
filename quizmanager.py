@@ -24,3 +24,36 @@ class QuizManager:
     def _build_quiz_list(self):
         dircontents = os.scandir(self.quizfolder)
         # parse the xml files in the directory 
+        for i, f in enumerate(dircontents):
+            if f.is_file():
+                parser = Quizparser.QuizParser()
+                self.quizzes[i+1] = parser.parse_quiz(f)
+
+    # print a list of the currently installed quizzes 
+    def list_quizzes(self):
+        for k, v in self.quizzes.items():
+            print(f"({k}): {v.name}")
+
+    # start the given quiz for a user and return the results
+    def take_quiz(self, quizid, username):
+        pass
+
+    # print the results of the most recently taken quiz
+    def print_results(self):
+        pass
+
+    # save the results of the most recent quiz to the file
+    # the file is named using the current date as 
+    # QuizResults _YYYY_MM_DD_N (N is incremented until unique)
+
+    def save_results(self):
+        pass
+
+
+if __name__ == "__main__":
+    qm = QuizManager("Quizfolder")
+    qm.list_quizzes()
+
+
+
+
