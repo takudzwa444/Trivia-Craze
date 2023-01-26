@@ -1,3 +1,5 @@
+import datetime
+
 class Quiz:
     def __init__(self):
         self.name = ""
@@ -16,8 +18,13 @@ class Quiz:
         print(f"TOTAL POINTS : {self.total_points}")
         print("--------------------------------------------")
 
-    def print_results(self):
+    def print_results(self, quiztaker):
         print("--------------------------------------------\n")
+        # print the results 
+        print(f"RESULTS for {quiztaker}")
+        print(f"DATE: {datetime.datetime.today()}")
+        print(f"QUESTIONS: {self.correct_count} out of {len(self.questions)} correct")
+        print(f"SCORE: {self.score} points out of possible {self.total_points}")
         print("----------------------------------------------")
 
     def take_quiz(self):
