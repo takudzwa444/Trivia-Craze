@@ -36,7 +36,9 @@ class QuizManager:
 
     # start the given quiz for a user and return the results
     def take_quiz(self, quizid, username):
-        pass
+        self.quiztaker = username
+        self.the_quiz = self.quizzes[quizid]
+        self.results = self.the_quiz.take_quiz()
 
     # print the results of the most recently taken quiz
     def print_results(self):
@@ -51,7 +53,7 @@ class QuizManager:
 
 
 if __name__ == "__main__":
-    qm = QuizManager("Quizfolder")
+    qm = QuizManager("QUIZZES")
     qm.list_quizzes()
 
 

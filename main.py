@@ -1,6 +1,11 @@
+from quizmanager import QuizManager
+
 class QuizApp:
+    QUIZ_FOLDER = "Quizzes"
+
     def __init__(self):
         self.username= " "
+        self.qm = QuizManager(QuizApp.QUIZ_FOLDER)
 
     def startup(self):
         self.greeting()
@@ -12,13 +17,13 @@ class QuizApp:
 
     def greeting(self):
         print("---------------------------------------------")
-        print("---------Welcome to your Quiz Trivia---------")
+        print("---------Welcome to your Trivia Craze ---------")
         print("---------------------------------------------")
 
     
     def goodbye(self):
         print("---------------------------------------------------")
-        print(f"Thanks for using the Quiz Trivia, {self.username}!")
+        print(f"Thanks for using the Trivia Craze, {self.username}!")
         print("---------------------------------------------------")
 
     def menu(self):
@@ -26,7 +31,7 @@ class QuizApp:
         # Thus will run until the user exits the application
         selection = " "
         while(True):
-            selection = input("Selection")
+            selection = input("Selection: ")
 
             if len(selection) == 0:
                 self.menu_error()
@@ -46,11 +51,20 @@ class QuizApp:
                 print()
                 print("Available Quizzes are: ")
                 # TO ADD THE LIST OF QUIZZES
+                
+                self.qm.list_quizzes()
+                print("-----------------------------------")
+                continue
 
             elif selection[0] == "T":
                 try:
                     quiznum = int(input("Quiz number: "))
                     print(f"You have selected quiz {quiznum}")
+
+                    # start the quiz 
+                    self.qm.take_quiz(quiznum, self.username)
+                    self.qm.print_results()
+                    # ask the user if they want to save the results 
                 except:
                     self.menu_error()
 
