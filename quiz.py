@@ -1,5 +1,6 @@
 import datetime
 import sys
+import random
 
 
 class Quiz:
@@ -37,6 +38,8 @@ class Quiz:
             q.is_correct = False
         # print the header
         self.print_header()
+        # randomize the questions 
+        random.shuffle(self.questions)
         # execute each question and record the result
         for q in self.questions:
             q.ask()
