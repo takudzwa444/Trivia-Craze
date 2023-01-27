@@ -49,7 +49,17 @@ class QuizManager:
     # QuizResults _YYYY_MM_DD_N (N is incremented until unique)
 
     def save_results(self):
-        pass
+        # Save the results
+        today = datetime.datetime.now()
+        filename = f"QuizResults_{today.year}_{today.month}_{today.day}.txt"
+         # if the file name already exists
+        n = 1
+        while(os.path.exists(filename)):
+            filename = f"QuizResults_{today.year}_{today.month}_{today.day}_{n}.txt"
+            n += 1
+
+        with open(filename, "w") as f:
+            self.the_quiz.print_results(self.quiztaker, f)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,6 @@
 import datetime
+import sys
+
 
 class Quiz:
     def __init__(self):
@@ -18,14 +20,14 @@ class Quiz:
         print(f"TOTAL POINTS : {self.total_points}")
         print("--------------------------------------------")
 
-    def print_results(self, quiztaker):
-        print("--------------------------------------------\n")
+    def print_results(self, quiztaker, thefile=sys.stdout):
+        print("--------------------------------------------", file=thefile, flush=True)
         # print the results 
-        print(f"RESULTS for {quiztaker}")
-        print(f"DATE: {datetime.datetime.today()}")
-        print(f"QUESTIONS: {self.correct_count} out of {len(self.questions)} correct")
-        print(f"SCORE: {self.score} points out of possible {self.total_points}")
-        print("----------------------------------------------")
+        print(f"RESULTS for {quiztaker}",file=thefile, flush=True)
+        print(f"DATE: {datetime.datetime.today()}",file=thefile, flush=True)
+        print(f"QUESTIONS: {self.correct_count} out of {len(self.questions)} correct", file=thefile, flush=True)
+        print(f"SCORE: {self.score} points out of possible {self.total_points}", file=thefile, flush=True)
+        print("----------------------------------------------\n", file=thefile, flush=True)
 
     def take_quiz(self):
         # initialize the quiz state
